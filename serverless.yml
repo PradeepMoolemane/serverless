@@ -88,11 +88,15 @@ functions:
           method: get
           integration: http
           cors: true
+          queryStringParameters: q         
           request:
             uri: 'https://sandbox1.breville.ae/wp-json/wc/v2/cart'
             passThrough: NEVER
             template:
               application/json: '{}'
+            headers:
+              Access-Control-Allow-Origin: "'*'"
+              X-Ep-User-Roles: "false"
           response:
             statusCodes:
               200:
