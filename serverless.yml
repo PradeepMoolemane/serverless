@@ -111,18 +111,58 @@ functions:
           request:
             uri: 'https://sandbox1.breville.ae/wp-json/wc/v2/cart/add'
             passThrough: NEVER
+            parameters:
+              querystrings:
+                search: true
             template:
               application/json: '{}'
+            headers:
+              Content-Type: "'application/json+hal'"
           response:
             statusCodes:
               200:
-                pattern: ''
-                Access-Control-Allow-Origin: "'https://breville-env.qa.breville.com''"
-                Access-Control-Allow-Credentials: "'true'"
+                pattern: ''                
+                headers:
+                  Content-Type: "'application/json+hal'"
+                  Access-Control-Allow-Origin: "'https://breville-env.qa.breville.com''"
+                  Access-Control-Allow-Credentials: "'true'"
               500:
-                pattern: ''
-                Access-Control-Allow-Origin: "'https://breville-env.qa.breville.com''"
-                Access-Control-Allow-Credentials: "'true'"
+                pattern: '500'
+                headers:
+                  Content-Type: "'application/json+hal'"
+                  Access-Control-Allow-Origin: "'https://breville-env.qa.breville.com''"
+                  Access-Control-Allow-Credentials: "'true'"
+      - http:
+          path: /cart/add/{id}
+          method: POST
+          integration: http
+          cors: true
+          request:
+            uri: 'https://sandbox1.breville.ae/wp-json/wc/v2/cart/add/{id}'
+            passThrough: NEVER
+            parameters:
+              querystrings:
+                search: true
+              paths:
+                id: true
+            template:
+              application/json: '{}'
+            headers:
+              Content-Type: "'application/json+hal'"
+          response:
+            statusCodes:
+              200:
+                pattern: ''                
+                headers:
+                  Content-Type: "'application/json+hal'"
+                  Access-Control-Allow-Origin: "'https://breville-env.qa.breville.com''"
+                  Access-Control-Allow-Credentials: "'true'"
+              500:
+                pattern: '500'
+                headers:
+                  Content-Type: "'application/json+hal'"
+                  Access-Control-Allow-Origin: "'https://breville-env.qa.breville.com''"
+                  Access-Control-Allow-Credentials: "'true'"
       - http:
           path: /cart/count-items
           method: get
