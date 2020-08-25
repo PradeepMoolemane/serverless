@@ -27,6 +27,7 @@ provider:
   stage: BrevilleAE
   region: us-east-2
   role: arn:aws:iam::300390189873:role/ServerlessTestRole
+  apiName: BrevilleAE-DEV
 
 # you can add statements to the Lambda function's IAM Role here
 #  iamRoleStatements:
