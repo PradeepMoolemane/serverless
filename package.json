@@ -1,0 +1,9 @@
+{
+  "name": "serverless",
+  "description": "",
+  "version": "0.1.0",
+  "dependencies": {},
+  "devDependencies": {
+    "serverless-api-stage": "^1.4.0"
+  }
+}

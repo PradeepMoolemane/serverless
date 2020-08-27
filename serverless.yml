@@ -24,10 +24,25 @@ provider:
   name: aws
   runtime: nodejs12.x
 
-  stage: BrevilleAE
+  stage: BrevilleAEDEV
   region: us-east-2
   role: arn:aws:iam::300390189873:role/ServerlessTestRole
-  apiName: BrevilleAE-DEV
+  apiName: BrevilleAE-stage
+
+plugins:
+ - serverless-api-stage
+
+custom:
+  stageSettings:
+    CacheClusterEnabled: true
+    CacheClusterSize: '0.5'
+    Variables:
+      foo: bar
+      baz: xyzzy
+#    MethodSettings:
+#      LoggingLevel: INFO
+#      CachingEnabled: true
+#      CacheTtlInSeconds: 3600
 
 # you can add statements to the Lambda function's IAM Role here
 #  iamRoleStatements:
@@ -69,7 +84,7 @@ functions:
           path: users/create
           method: get
           integration: http
-          cors: false
+          cors: false          
           request:
             uri: 'https://sb2admin.breville.ae'
             passThrough: NEVER
